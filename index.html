@@ -1,45 +1,406 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Akmal Mustaqim - Your IT Solution</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akmal Mustaqim | IT Infrastructure & Support</title>
+  <meta name="description" content="Akmal Mustaqim is an IT support and infrastructure professional focused on secure operations, end-user support, and dependable systems delivery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0a0d14;
+      --bg-soft: #111623;
+      --panel: rgba(17, 22, 35, 0.76);
+      --panel-2: rgba(255, 255, 255, 0.04);
+      --line: rgba(255,255,255,0.1);
+      --text: #f4f7fb;
+      --muted: #a8b3c7;
+      --soft: #dbe4f3;
+      --primary: #73a7ff;
+      --accent: #89f0dc;
+      --glow: radial-gradient(circle at top left, rgba(115,167,255,0.24), transparent 38%), radial-gradient(circle at bottom right, rgba(137,240,220,0.18), transparent 34%), linear-gradient(180deg, #0a0d14 0%, #0d111b 100%);
+      --radius: 22px;
+      --shadow: 0 30px 70px rgba(0,0,0,.35);
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--glow);
+      color: var(--text);
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 78%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(10,13,20,.55);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0;
+    }
+    .logo {
+      display:flex; align-items:center; gap:12px; font-weight:700;
+    }
+    .logo-mark {
+      width: 38px; height: 38px; border-radius: 12px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(115,167,255,.2), rgba(137,240,220,.2));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      font-weight: 800;
+    }
+    .nav-links { display:flex; gap:22px; color: var(--muted); font-size: 14px; }
+    .hero {
+      padding: 70px 0 34px;
+    }
+    .hero-wrap {
+      display:grid; grid-template-columns: 1.2fr .8fr; gap: 24px;
+      align-items: stretch;
+    }
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+    .glass::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.07), transparent 18%);
+      pointer-events: none;
+    }
+    .hero-copy { padding: 38px; }
+    .tag {
+      display:inline-flex; align-items:center; gap:10px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.05);
+      color: var(--soft);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px; font-weight: 700;
     }
     h1 {
-      color: #01696f;
+      margin: 22px 0 16px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 5.9rem);
+      line-height: .96;
+      letter-spacing: -.05em;
+      max-width: 10ch;
     }
-    .card {
-      background: #f9f8f5;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
+    .lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 60ch;
+    }
+    .cta-row { display:flex; flex-wrap:wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 15px;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #79aaff, #5f86ff);
+      color: #08101d;
+    }
+    .btn-secondary {
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+    .hero-side { display:grid; gap: 16px; }
+    .metric { padding: 24px; min-height: 148px; }
+    .metric .label { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .12em; }
+    .metric strong { display:block; margin: 14px 0 8px; font-size: 2rem; letter-spacing: -.05em; }
+    .section { padding: 28px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom: 18px; }
+    .eyebrow { color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: .16em; font-weight: 800; }
+    h2 {
+      margin: 8px 0 0;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+    .muted { color: var(--muted); }
+    .grid-2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .panel { padding: 26px; }
+    .about-copy p { margin: 0; }
+    .edu-card strong, .contact-card strong { color: var(--text); }
+    .timeline { display:grid; gap:18px; }
+    .job { padding: 26px; }
+    .job-top { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom: 12px; }
+    .job h3 { margin:0; font-size: 1.12rem; }
+    .job .role { color: var(--primary); font-weight: 700; font-size: 14px; }
+    .job .date { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    ul { margin: 0; padding-left: 18px; color: var(--soft); }
+    li + li { margin-top: 10px; }
+    .chips { display:flex; flex-wrap:wrap; gap:10px; }
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      color: var(--soft);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .project { height: 100%; }
+    .project-visual {
+      aspect-ratio: 16/10;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(115,167,255,.4), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(137,240,220,.25), transparent 28%),
+        linear-gradient(135deg, rgba(24,34,56,1), rgba(11,16,29,1));
+      border: 1px solid rgba(255,255,255,.08);
+      display:flex; align-items:flex-end; padding:18px;
+      color:#fff; font-weight:700; margin-bottom: 16px;
+    }
+    .project h3 { margin: 0 0 8px; }
+    .contact-list { display:grid; gap:12px; color: var(--soft); }
+    .footer { padding: 34px 0 56px; color: var(--muted); font-size: 14px; }
+    .note {
+      margin-top: 14px; font-size: 13px; color: var(--muted);
+      padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08);
+    }
+    @media (max-width: 960px) {
+      .hero-wrap, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .nav-links { display:none; }
+      .hero { padding-top: 42px; }
+      .job-top { flex-direction: column; }
+      .job .date { white-space: normal; }
     }
   </style>
 </head>
 <body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <div class="logo-mark">AM</div>
+        <div>Akmal Mustaqim</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <h1>Akmal Mustaqim</h1>
-  <h3>IT Executive</h3>
-  
-  <p>Hello! Welcome to my portfolio.</p>
+  <main>
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div class="glass hero-copy">
+          <div class="tag">IT Support • Infrastructure • Secure Operations</div>
+          <h1>Modern IT support with reliable infrastructure delivery.</h1>
+          <p class="lead">I’m Akmal Mustaqim, an IT professional based in Melaka with experience across end-user support, infrastructure deployment, network operations, and practical business IT delivery.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Get in touch</a>
+            <a class="btn btn-secondary" href="#projects">View work</a>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="glass metric">
+            <div class="label">Current position</div>
+            <strong>IT Executive</strong>
+            <div class="muted">iRadar Sdn Bhd</div>
+          </div>
+          <div class="glass metric">
+            <div class="label">Experience</div>
+            <strong>2020 — now</strong>
+            <div class="muted">Hands-on delivery in support, infra, monitoring, and workplace systems</div>
+          </div>
+          <div class="glass metric">
+            <div class="label">Core stack</div>
+            <strong>Firewall • NAS • M365</strong>
+            <div class="muted">IP Sec, Zabbix, osTicket, CCTV, wireless, and end-user operations</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="card">
-    <h2>About Me</h2>
-    <p>I have 5 years of experience in IT support, infrastructure, and system deployment..</p>
-  </div>
+    <section class="section" id="about">
+      <div class="container grid-2">
+        <div class="glass panel about-copy">
+          <div class="eyebrow">Profile</div>
+          <h2>Professional summary</h2>
+          <p>I am passionate about driving innovation and helping businesses operate through robust, scalable, and secure IT solutions. My focus is practical: support users well, stabilize infrastructure, and build systems that teams can depend on every day.</p>
+        </div>
+        <div class="glass panel edu-card">
+          <div class="eyebrow">Education</div>
+          <h2>Academic background</h2>
+          <p><strong>Bachelor of Information Technology (Hons.)</strong><br>UiTM Shah Alam • 2015 – 2018</p>
+          <p><strong>Diploma in Computer Science</strong><br>UiTM Jasin • 2013 – 2015</p>
+        </div>
+      </div>
+    </section>
 
-  <div class="card">
-    <h2>Side Projects</h2>
-    <p>Currently developing a web-based decision-support tool for the game <i>Skill Legends Royale</i>.</p>
-  </div>
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Experience</div>
+            <h2>Career path</h2>
+          </div>
+          <div class="muted">Selected roles from your resume, presented as a cleaner portfolio timeline.</div>
+        </div>
+        <div class="timeline">
+          <article class="glass job">
+            <div class="job-top">
+              <div>
+                <h3>iRadar Sdn Bhd</h3>
+                <div class="role">IT Executive</div>
+              </div>
+              <div class="date">July 2024 – Present</div>
+            </div>
+            <ul>
+              <li>Managed infrastructure delivery involving a stateful firewall, Synology NAS, IP Sec connection, Zabbix monitoring, and osTicketing.</li>
+              <li>Supported business users across laptops, PCs, printers/copiers, and network troubleshooting.</li>
+            </ul>
+          </article>
+          <article class="glass job">
+            <div class="job-top">
+              <div>
+                <h3>Cohu Malaysia Sdn Bhd</h3>
+                <div class="role">IT Support Specialist</div>
+              </div>
+              <div class="date">Dec 2022 – June 2024</div>
+            </div>
+            <ul>
+              <li>Provided support for hardware and software issues including Microsoft 365 applications.</li>
+              <li>Installed and configured access points, CCTV, and door access systems.</li>
+            </ul>
+          </article>
+          <article class="glass job">
+            <div class="job-top">
+              <div>
+                <h3>Selia Selenggara Selatan Sdn Bhd</h3>
+                <div class="role">Junior IT Executive</div>
+              </div>
+              <div class="date">Sept 2020 – Dec 2022</div>
+            </div>
+            <ul>
+              <li>Handled end-user hardware and software support.</li>
+              <li>Monitored network, firewall, cloud and on-prem servers, and computers as part of ongoing infrastructure operations.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <p>Email: <a href="mailto:hello@arcmal.com">hello@arcmal.com</a></p>
+    <section class="section" id="skills">
+      <div class="container grid-2">
+        <div class="glass panel">
+          <div class="eyebrow">Capabilities</div>
+          <h2>Technical strengths</h2>
+          <div class="chips">
+            <span class="chip">IT Support</span>
+            <span class="chip">Infrastructure</span>
+            <span class="chip">Stateful Firewall</span>
+            <span class="chip">Synology NAS</span>
+            <span class="chip">IP Sec</span>
+            <span class="chip">Zabbix</span>
+            <span class="chip">osTicket</span>
+            <span class="chip">Microsoft 365</span>
+            <span class="chip">Wireless</span>
+            <span class="chip">CCTV</span>
+            <span class="chip">Door Access</span>
+            <span class="chip">Network Troubleshooting</span>
+          </div>
+        </div>
+        <div class="glass panel">
+          <div class="eyebrow">Credentials</div>
+          <h2>Certifications & languages</h2>
+          <ul>
+            <li>TP-Link OCNA Wireless</li>
+            <li>TP-Link OCNA Routing & Switching</li>
+            <li>EC-Council Certified Network Defender</li>
+            <li>Azure Certificate</li>
+          </ul>
+          <p class="muted" style="margin-top:16px;">Languages: English, Malay</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Portfolio</div>
+            <h2>Selected work</h2>
+          </div>
+          <div class="muted">These are premium-looking starter cards based on your resume and can later be upgraded into full case studies.</div>
+        </div>
+        <div class="grid-3">
+          <article class="glass panel project">
+            <div class="project-visual">Infra rollout</div>
+            <h3>Secure infrastructure deployment</h3>
+            <p class="muted">Presented firewall, Synology NAS, IP Sec, and Zabbix work as one polished operations case study for your portfolio.</p>
+          </article>
+          <article class="glass panel project">
+            <div class="project-visual">Support systems</div>
+            <h3>Business user support operations</h3>
+            <p class="muted">Highlights your practical day-to-day support capability across devices, Microsoft 365, peripherals, and network troubleshooting.</p>
+          </article>
+          <article class="glass panel project">
+            <div class="project-visual">Site readiness</div>
+            <h3>Access, CCTV, and network setup</h3>
+            <p class="muted">Shows your ability to implement workplace technology beyond software, including wireless, surveillance, and access control systems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container grid-2">
+        <div class="glass panel contact-card">
+          <div class="eyebrow">Contact</div>
+          <h2>Open to opportunities</h2>
+          <div class="contact-list">
+            <div><strong>Phone</strong><br>+60 16-224 7320</div>
+            <div><strong>Email</strong><br><a href="mailto:muzakmal27@gmail.com">muzakmal27@gmail.com</a></div>
+            <div><strong>Location</strong><br>Ayer Keroh, Melaka</div>
+          </div>
+        </div>
+        <div class="glass panel">
+          <div class="eyebrow">Reference</div>
+          <h2>Public profile note</h2>
+          <p class="muted">Your resume includes a reference contact, but it is safer not to publish another person's phone number on a public website unless they clearly approved it.</p>
+          <div class="note">You can replace this block with a resume download button, LinkedIn link, or project screenshots next.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Akmal Mustaqim • Premium portfolio homepage for GitHub Pages.</div>
+  </footer>
 </body>
 </html>
